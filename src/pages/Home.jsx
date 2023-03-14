@@ -4,11 +4,13 @@ import user from "../images/user.png";
 import heart from "../images/heart.png";
 import comment from "../images/comment.png";
 
+import PropTypes from "prop-types";
+
 const Home = ({ posts }) => {
   return (
     <div className={styles.postsList}>
       {posts.map((post) => (
-        <div className={styles.postWrapper}>
+        <div className={styles.postWrapper} key={`post-${post._id}`}>
           <div className={styles.postHeader}>
             <div className={styles.postAvatar}>
               <img src={user} alt="user-pic" />
@@ -50,6 +52,10 @@ const Home = ({ posts }) => {
       ))}
     </div>
   );
+};
+
+Home.propTypes = {
+  posts: PropTypes.array.isRequired,
 };
 
 export default Home;
